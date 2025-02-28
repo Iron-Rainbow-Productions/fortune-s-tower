@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://e5al41i5yayd"]
+
+[ext_resource type="PackedScene" uid="uid://b31ygwsvk3soo" path="res://Nodes/game_board.tscn" id="1_1fw0g"]
+[ext_resource type="PackedScene" uid="uid://0pqsghgdlmjx" path="res://Nodes/Tower.tscn" id="2_4josg"]
+
+[node name="Design" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="GameBoard" parent="." instance=ExtResource("1_1fw0g")]
+offset_left = 369.0
+offset_top = 645.0
+offset_right = 369.0
+offset_bottom = 645.0
+
+[node name="Tower" parent="." instance=ExtResource("2_4josg")]
+position = Vector2(367, 607)
+scale = Vector2(1.2, 1.2)

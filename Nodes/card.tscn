@@ -1,0 +1,90 @@
+[gd_scene load_steps=16 format=3 uid="uid://5idum0psvn3d"]
+
+[ext_resource type="Script" path="res://Nodes/card.gd" id="1_t2d16"]
+[ext_resource type="Texture2D" uid="uid://besfn3vr13bd7" path="res://Assets/Graphics/Cards/cardstock.png" id="1_xmv6m"]
+[ext_resource type="Texture2D" uid="uid://u3l2j78482fd" path="res://Assets/Graphics/Cards/1.png" id="2_h8pfl"]
+[ext_resource type="Texture2D" uid="uid://dbtngscishbs8" path="res://Assets/Graphics/Cards/2.png" id="3_1r217"]
+[ext_resource type="Texture2D" uid="uid://cxkg4g28tui8s" path="res://Assets/Graphics/Cards/3.png" id="4_xxlp2"]
+[ext_resource type="Texture2D" uid="uid://c05wcws43o7na" path="res://Assets/Graphics/Cards/4.png" id="5_s1fby"]
+[ext_resource type="Texture2D" uid="uid://cq4vjn7lrxrle" path="res://Assets/Graphics/Cards/5.png" id="6_h3bun"]
+[ext_resource type="Texture2D" uid="uid://cgux4piygu82y" path="res://Assets/Graphics/Cards/6.png" id="7_br4rn"]
+[ext_resource type="Texture2D" uid="uid://dvkc0wr7drejx" path="res://Assets/Graphics/Cards/hero.png" id="8_5vyok"]
+[ext_resource type="Texture2D" uid="uid://bdjho376giem2" path="res://Assets/Graphics/Cards/SevenCardStock.png" id="9_6fdgc"]
+[ext_resource type="Texture2D" uid="uid://free5qbsr8an" path="res://Assets/Graphics/Cards/7.png" id="10_o03hx"]
+[ext_resource type="Texture2D" uid="uid://b56dwhjhhtkyc" path="res://Assets/Graphics/Cards/BurnDamage.png" id="11_61ujn"]
+[ext_resource type="Texture2D" uid="uid://dljegtcfm7rdp" path="res://Assets/Graphics/Cards/Cardback__bg.png" id="12_gt5yu"]
+[ext_resource type="Texture2D" uid="uid://b32rsdpvjpmju" path="res://Assets/Graphics/Cards/Cardback__mg.png" id="13_mv0qa"]
+[ext_resource type="Texture2D" uid="uid://tx6amylukbpp" path="res://Assets/Graphics/Cards/IRP_logo.png" id="14_cny02"]
+
+[node name="Card" type="Node2D"]
+scale = Vector2(0.125, 0.125)
+script = ExtResource("1_t2d16")
+
+[node name="one__bg" type="Sprite2D" parent="."]
+texture = ExtResource("1_xmv6m")
+
+[node name="one__art" type="Sprite2D" parent="one__bg"]
+texture = ExtResource("2_h8pfl")
+
+[node name="two__bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_xmv6m")
+
+[node name="two__art" type="Sprite2D" parent="two__bg"]
+texture = ExtResource("3_1r217")
+
+[node name="three__bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_xmv6m")
+
+[node name="three__art" type="Sprite2D" parent="three__bg"]
+texture = ExtResource("4_xxlp2")
+
+[node name="four__bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_xmv6m")
+
+[node name="four__art" type="Sprite2D" parent="four__bg"]
+texture = ExtResource("5_s1fby")
+
+[node name="five__bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_xmv6m")
+
+[node name="five__art" type="Sprite2D" parent="five__bg"]
+texture = ExtResource("6_h3bun")
+
+[node name="six__bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_xmv6m")
+
+[node name="six__art" type="Sprite2D" parent="six__bg"]
+texture = ExtResource("7_br4rn")
+
+[node name="hero__bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_xmv6m")
+
+[node name="hero__art" type="Sprite2D" parent="hero__bg"]
+texture = ExtResource("8_5vyok")
+
+[node name="seven__bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("9_6fdgc")
+
+[node name="seven__art" type="Sprite2D" parent="seven__bg"]
+texture = ExtResource("10_o03hx")
+
+[node name="burn__fg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("11_61ujn")
+
+[node name="cardback__bg" type="Sprite2D" parent="."]
+texture = ExtResource("12_gt5yu")
+
+[node name="cardback__mg" type="Sprite2D" parent="cardback__bg"]
+texture = ExtResource("13_mv0qa")
+
+[node name="carback__logo" type="Sprite2D" parent="cardback__bg"]
+scale = Vector2(3, 3)
+texture = ExtResource("14_cny02")

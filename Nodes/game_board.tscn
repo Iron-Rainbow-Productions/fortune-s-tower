@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://b31ygwsvk3soo"]
+
+[ext_resource type="Script" path="res://Nodes/game_board.gd" id="1_qaaj2"]
+[ext_resource type="Texture2D" uid="uid://belh5373lmvyu" path="res://Assets/Graphics/GameBoard/Base/GameBoard__bg.png" id="1_rifgy"]
+[ext_resource type="Texture2D" uid="uid://cbfg47vop7056" path="res://Assets/Graphics/GameBoard/Base/Board__fg.png" id="2_jd3lk"]
+[ext_resource type="Texture2D" uid="uid://c2fpc8t2sf885" path="res://Assets/Graphics/GameBoard/Base/Felt__mg.png" id="3_w4gqb"]
+[ext_resource type="Texture2D" uid="uid://dv1xx6k7t8hwo" path="res://Assets/Graphics/GameBoard/Base/felt__fg.png" id="4_h8sv4"]
+
+[node name="GameBoard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qaaj2")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -5.0
+offset_right = -8.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_rifgy")
+
+[node name="Boards" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -187.0
+offset_top = -327.0
+offset_right = 173.0
+offset_bottom = 313.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jd3lk")
+
+[node name="FeltRim" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_w4gqb")
+
+[node name="Felt" type="TextureRect" parent="FeltRim"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_h8sv4")
