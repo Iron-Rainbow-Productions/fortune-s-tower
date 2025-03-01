@@ -1,0 +1,297 @@
+[gd_scene load_steps=24 format=3 uid="uid://5idum0psvn3d"]
+
+[ext_resource type="Script" path="res://Assets/Nodes/card.gd" id="1_t2d16"]
+[ext_resource type="Texture2D" uid="uid://besfn3vr13bd7" path="res://Assets/Graphics/Cards/cardstock.png" id="1_xmv6m"]
+[ext_resource type="Texture2D" uid="uid://u3l2j78482fd" path="res://Assets/Graphics/Cards/1.png" id="2_h8pfl"]
+[ext_resource type="Texture2D" uid="uid://dbtngscishbs8" path="res://Assets/Graphics/Cards/2.png" id="3_1r217"]
+[ext_resource type="Texture2D" uid="uid://cxkg4g28tui8s" path="res://Assets/Graphics/Cards/3.png" id="4_xxlp2"]
+[ext_resource type="Texture2D" uid="uid://c05wcws43o7na" path="res://Assets/Graphics/Cards/4.png" id="5_s1fby"]
+[ext_resource type="Texture2D" uid="uid://cq4vjn7lrxrle" path="res://Assets/Graphics/Cards/5.png" id="6_h3bun"]
+[ext_resource type="Texture2D" uid="uid://cgux4piygu82y" path="res://Assets/Graphics/Cards/6.png" id="7_br4rn"]
+[ext_resource type="Texture2D" uid="uid://dvkc0wr7drejx" path="res://Assets/Graphics/Cards/hero.png" id="8_5vyok"]
+[ext_resource type="Texture2D" uid="uid://bdjho376giem2" path="res://Assets/Graphics/Cards/SevenCardStock.png" id="9_6fdgc"]
+[ext_resource type="Texture2D" uid="uid://free5qbsr8an" path="res://Assets/Graphics/Cards/7.png" id="10_o03hx"]
+[ext_resource type="Texture2D" uid="uid://b56dwhjhhtkyc" path="res://Assets/Graphics/Cards/BurnDamage.png" id="11_61ujn"]
+[ext_resource type="Texture2D" uid="uid://dljegtcfm7rdp" path="res://Assets/Graphics/Cards/Cardback__bg.png" id="12_gt5yu"]
+[ext_resource type="Texture2D" uid="uid://b32rsdpvjpmju" path="res://Assets/Graphics/Cards/Cardback__mg.png" id="13_mv0qa"]
+[ext_resource type="Texture2D" uid="uid://tx6amylukbpp" path="res://Assets/Graphics/Cards/IRP_logo.png" id="14_cny02"]
+[ext_resource type="Texture2D" uid="uid://c1b6y4axen5j3" path="res://Assets/Graphics/Cards/burnparticle.png" id="16_jrff5"]
+
+[sub_resource type="Animation" id="Animation_anygm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.125, 0.125)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cardback__bg:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("burn__fg:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("burner:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("burner:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -312)]
+}
+
+[sub_resource type="Animation" id="Animation_jh6e3"]
+resource_name = "Flip"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.125, 0.125), Vector2(0.06, 0.125), Vector2(0.03, 0.125), Vector2(0.01, 0.125), Vector2(0.03, 0.125), Vector2(0.06, 0.125), Vector2(0.125, 0.125)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cardback__bg:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ejnjm"]
+resource_name = "burn"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 0.90125, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.668087, 0.256866, 9.62615e-08, 0.0627451), Color(0.0562916, 0.0562916, 0.0562916, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("burn__fg:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("burner:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("burner:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -312), Vector2(0, 320)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yyu8f"]
+_data = {
+"Flip": SubResource("Animation_jh6e3"),
+"RESET": SubResource("Animation_anygm"),
+"burn": SubResource("Animation_ejnjm")
+}
+
+[sub_resource type="Gradient" id="Gradient_gy6le"]
+offsets = PackedFloat32Array(0, 0.893443)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w7yb7"]
+gradient = SubResource("Gradient_gy6le")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l5jh3"]
+lifetime_randomness = 0.79
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 403.21
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.0
+scale_max = 0.75
+color = Color(0.948539, 0.432575, 2.65682e-05, 1)
+color_ramp = SubResource("GradientTexture1D_w7yb7")
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.1
+turbulence_enabled = true
+turbulence_noise_strength = 10.9
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.101
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+
+[node name="Card" type="Node2D"]
+scale = Vector2(0.125, 0.125)
+script = ExtResource("1_t2d16")
+
+[node name="one__bg" type="Sprite2D" parent="."]
+texture = ExtResource("1_xmv6m")
+
+[node name="one__art" type="Sprite2D" parent="one__bg"]
+texture = ExtResource("2_h8pfl")
+
+[node name="two__bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_xmv6m")
+
+[node name="two__art" type="Sprite2D" parent="two__bg"]
+texture = ExtResource("3_1r217")
+
+[node name="three__bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_xmv6m")
+
+[node name="three__art" type="Sprite2D" parent="three__bg"]
+texture = ExtResource("4_xxlp2")
+
+[node name="four__bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_xmv6m")
+
+[node name="four__art" type="Sprite2D" parent="four__bg"]
+texture = ExtResource("5_s1fby")
+
+[node name="five__bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_xmv6m")
+
+[node name="five__art" type="Sprite2D" parent="five__bg"]
+texture = ExtResource("6_h3bun")
+
+[node name="six__bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_xmv6m")
+
+[node name="six__art" type="Sprite2D" parent="six__bg"]
+texture = ExtResource("7_br4rn")
+
+[node name="hero__bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_xmv6m")
+
+[node name="hero__art" type="Sprite2D" parent="hero__bg"]
+texture = ExtResource("8_5vyok")
+
+[node name="seven__bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("9_6fdgc")
+
+[node name="seven__art" type="Sprite2D" parent="seven__bg"]
+texture = ExtResource("10_o03hx")
+
+[node name="burn__fg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("11_61ujn")
+
+[node name="cardback__bg" type="Sprite2D" parent="."]
+texture = ExtResource("12_gt5yu")
+
+[node name="cardback__mg" type="Sprite2D" parent="cardback__bg"]
+texture = ExtResource("13_mv0qa")
+
+[node name="carback__logo" type="Sprite2D" parent="cardback__bg"]
+scale = Vector2(3, 3)
+texture = ExtResource("14_cny02")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yyu8f")
+}
+movie_quit_on_finish = true
+
+[node name="burner" type="GPUParticles2D" parent="."]
+position = Vector2(0, -312)
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_l5jh3")
+texture = ExtResource("16_jrff5")
+
+[node name="burntimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="burntimer" to="." method="_on_burntimer_timeout"]

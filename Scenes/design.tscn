@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://e5al41i5yayd"]
 
-[ext_resource type="PackedScene" uid="uid://b31ygwsvk3soo" path="res://Nodes/game_board.tscn" id="1_1fw0g"]
-[ext_resource type="PackedScene" uid="uid://0pqsghgdlmjx" path="res://Nodes/Tower.tscn" id="2_4josg"]
+[ext_resource type="PackedScene" uid="uid://b31ygwsvk3soo" path="res://Assets/Nodes/game_board.tscn" id="1_1fw0g"]
+[ext_resource type="PackedScene" uid="uid://0pqsghgdlmjx" path="res://Assets/Nodes/Tower.tscn" id="2_4josg"]
 
 [node name="Design" type="Node2D"]
 scale = Vector2(0.5, 0.5)
@@ -15,3 +15,19 @@ offset_bottom = 645.0
 [node name="Tower" parent="." instance=ExtResource("2_4josg")]
 position = Vector2(367, 607)
 scale = Vector2(1.2, 1.2)
+
+[node name="Reveal" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 328.0
+offset_top = 924.0
+offset_right = 359.0
+offset_bottom = 955.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+text = "Hit"
+
+[connection signal="pressed" from="Reveal" to="Tower" method="_on_reveal_pressed"]

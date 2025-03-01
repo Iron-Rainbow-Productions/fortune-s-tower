@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Fortune's Tower"
-run/main_scene="res://Scenes/design.tscn"
+run/main_scene="res://Scenes/Game.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Game_Dealer="*res://Globals/Dealer.gd"
 
 [display]
 
