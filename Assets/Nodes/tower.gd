@@ -1,8 +1,14 @@
 extends Node2D
 
+class_name Tower
+
 var turn = 1
 var burnt = false
+var spare_there = true
 var activescore = 0
+var good_save = false
+var reburn = true
+
 
 @onready var card_1 = $Card1
 @onready var card_2 = $Card2
@@ -40,6 +46,7 @@ var activescore = 0
 @onready var card_34 = $Card34
 @onready var card_35 = $Card35
 @onready var card_36 = $Card36
+@onready var burntimer = $burntimer
 
 
 
@@ -74,8 +81,6 @@ func _ready():
 	shuffle_Deck()
 	deal_Deck()
 
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -97,6 +102,10 @@ func deal_Deck():
 		card +=1
 
 func reveal_Row(row):
+
+	if !spare_there:
+		good_save = true
+
 	match row:
 		1:
 			for x in row2:
@@ -141,104 +150,234 @@ func calc_score(row) -> int:
 				rowscore += x.card
 		return rowscore
 
+
+#REWRITE THIS SHYTE IMMEDIATELY
 func calc_burn(row):
 	var address=0
-	if row == 1 or row == 2:
+	if row == 0 or row == 1:
 		pass
 	else:
-		match row:
+		match turn:
 			2:
 				for x in row3:
 					if x == row3[0]:
 						if x.card == row2[0].card:
 							x.burn()
-							burnt = true
-					elif x == row3[2]:
+							if !calc_save(x, row3, 2):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row2[0].card:
+										burntimer.start()
+								return
+					elif x == row3[len(row3)-1]:
 						if x.card == row2[1].card:
 							x.burn()
-							burnt = true
+							if !calc_save(x, row3,2):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row2[1].card:
+										burntimer.start()
+									return
 					else:
 						for y in row2:
 							if x.card == y.card:
 								x.burn()
-								burnt = true
+								if !calc_save(x, row3,2):
+									burnt = true
+									if !spare_there and good_save:
+										if card_1.card == y.card and reburn:
+											reburn = false
+											burntimer.start()
+										return
 			3:
 				for x in row4:
 					if x == row4[0]:
 						address += 1
 						if x.card == row3[0].card:
 							x.burn()
-							burnt = true
-					elif x == row4[2]:
-						if x.card == row3[2].card:
+							if !calc_save(x, row4,3):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row3[0].card and reburn:
+										reburn = false
+										burntimer.start()
+									return
+					elif x == row4[len(row4)-1]:
+						if x.card == row3[len(row3)-1].card:
 							x.burn()
-							burnt = true
+							if !calc_save(x, row4,3):
+								burnt = true
+								if !spare_there and good_save:
+									if ca
+									if card_1.card == row3[len(row3)-1].card and reburn:
+										reburn = false
+										burntimer.start()
+									return
 					else:
 						if row4[address].card == row3[address-1].card or row4[address].card == row3[address].card:
 							row4[address].burn()
-							burnt = true
-							address += 1
+							if !calc_save(x, row4,3):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row3[address-1].card or card_1.card == row3[address].card and reburn:
+										reburn = false
+										burntimer.start()
+									return
+						address += 1
 			4:
 				for x in row5:
 					if x == row5[0]:
 						address += 1
 						if x.card == row4[0].card:
 							x.burn()
-							burnt = true
-					elif x == row5[2]:
-						if x.card == row4[2].card:
-							x.burn()
+							if !calc_save(x, row5,3):
+								burnt = true
+								if card_1.card == row4[0].card and reburn:
+									reburn = false
+									burntimer.start()
+								return
+					elif x == row5[len(row5)-1]:
+						if x.card == row4[len(row4)-1].card:
+							if !calc_save(x, row5,3):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row4[len(row4)-1].card and reburn:
+										reburn = false
+										burntimer.start()
+									return
 					else:
 						if row5[address].card == row4[address-1].card or row5[address].card == row4[address].card:
 							row5[address].burn()
-							burnt = true
-							address += 1
+							if !calc_save(x, row5,3):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row4[address-1].card or card_1.card == row4[address].card and reburn:
+										reburn = false
+										burntimer.start()
+									return
+						address += 1
 			5:
 				for x in row6:
 					if x == row6[0]:
 						address += 1
 						if x.card == row5[0].card:
 							x.burn()
-							burnt = true
-					elif x == row6[2]:
-						if x.card == row5[2].card:
+							if !calc_save(x, row6,5):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row5[0].card and reburn:
+										reburn = false
+										burntimer.start()
+									return
+					elif x == row6[len(row6)-1]:
+						if x.card == row5[len(row5)-1].card:
 							x.burn()
-							burnt = true
+							if !calc_save(x, row6,5):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row5[len(row5)-1].card and reburn:
+										reburn = false
+										burntimer.start()
+									return
 					else:
 						if row6[address].card == row5[address-1].card or row6[address].card == row5[address].card:
 							row6[address].burn()
-							burnt = true
-							address += 1
+							if !calc_save(x, row6,5):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row5[address-1].card or card_1.card == row5[address].card and reburn:
+										reburn = false
+										burntimer.start()
+									return
+						address += 1
 			6:
 				for x in row7:
 					if x == row7[0]:
 						address += 1
 						if x.card == row6[0].card:
 							x.burn()
-							burnt = true
-					elif x == row7[2]:
-						if x.card == row6[2].card:
+							if !calc_save(x, row7,6):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row6[0].card and reburn:
+										reburn = false
+										burntimer.start()
+									return
+					elif x == row7[len(row7)-1]:
+						if x.card == row6[len(row6)-1].card:
 							x.burn()
-							burnt = true
+							if !calc_save(x, row7,6):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row6[len(row6)-1].card and reburn:
+										reburn = false
+										burntimer.start()
+									return
 					else:
 						if row7[address].card == row6[address-1].card or row7[address].card == row6[address].card:
 							row7[address].burn()
-							burnt = true
-							address += 1
+							if !calc_save(x, row7,6):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row6[address-1].card or card_1.card == row6[address].card and reburn:
+										reburn = false
+										burntimer.start()
+									return
+						address += 1
 			7:
 				for x in row8:
 					if x == row8[0]:
 						address += 1
 						if x.card == row7[0].card:
 							x.burn()
-							burnt = true
-					elif x == row8[2]:
-						if x.card == row7[2].card:
+							if !calc_save(x, row8,7):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row7[0].card and reburn:
+										reburn = false
+										burntimer.start()
+									return
+					elif x == row8[len(row8)-1]:
+						if x.card == row7[len(row7)-1].card:
 							x.burn()
-							burnt = true
+							if !calc_save(x, row8,7):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row7[len(row7)-1].card and reburn:
+										reburn = false
+										burntimer.start()
+									return
 					else:
 						if row8[address].card == row7[address-1].card or row8[address].card == row7[address].card:
 							row8[address].burn()
-							burnt = true
-							address += 1
-	turn += 1
+							if !calc_save(x, row8,7):
+								burnt = true
+								if !spare_there and good_save:
+									if card_1.card == row7[address-1].card or card_1.card == row7[address].card and reburn:
+										reburn = false
+										burntimer.start()
+									return
+						address += 1
+	turn +=1
+
+func calc_save(card_id:Card, row, row_num):
+	var crd = card_1.card
+	
+	for x in row:
+		if x.card == 8:
+			return true
+	if spare_there == true:
+		spare_there = false
+		good_save = true
+		card_id.cardback__bg.visible = true
+		card_id.card = crd
+		card_1.use_Spare(card_id)
+		calc_burn(row_num)
+		turn -= 1
+
+		return true
+	else:
+		return false
+
+func _on_burntimer_timeout():
+	card_1.burn()

@@ -15,6 +15,8 @@ class_name  Card
 @onready var animation_player = $AnimationPlayer
 @onready var burner = $burner
 @onready var burntimer = $burntimer
+@onready var revealtimer = $revealtimer
+@onready var animation_player_2 = $AnimationPlayer2
 
 
 @onready var cardstates = [cardback__bg,one__bg,two__bg,
@@ -22,6 +24,7 @@ three__bg,four__bg,five__bg,six__bg,
 seven__bg,hero__bg,burn__fg]
 
 var card:int = 0
+@export var target_pos:Vector2
 
 #Core Functions
 func _ready():
@@ -37,10 +40,29 @@ func set_Card(cardID):
 func reveal_Card():
 	cardstates[card].visible = true
 	animation_player.play("Flip")
+	
 
 func hide_Card():
 	cardstates[0].visible = true
 	cardstates[card].visible = true
+
+func replace_Card():
+	for x in cardstates:
+		x.visible = false
+
+func use_Spare(target_card:Card):
+	var tween = get_tree().create_tween()
+	
+	tween.tween_property(self,"position", self.position + Vector2(0,0), 1)
+	revealtimer.start()
+	
+	tween.tween_property(self,"position", self.position - Vector2(0,100), .5)
+	tween.parallel().tween_property(self,"z_index", 16, 2)
+	
+	tween.tween_property(self,"z_index", target_card.z_index,.5)
+	tween.parallel().tween_property(self,"position",target_card.position,.5)
+	tween.parallel().tween_property(target_card,"z_index",target_card.z_index-1,.5)
+
 
 func burn():
 	burntimer.start()
@@ -50,3 +72,8 @@ func turn_off():
 
 func _on_burntimer_timeout():
 	animation_player.play("burn")
+
+
+func _on_revealtimer_timeout():
+	reveal_Card()
+	animation_player_2.play("use_Spare")
