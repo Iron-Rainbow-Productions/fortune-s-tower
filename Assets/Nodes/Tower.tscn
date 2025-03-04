@@ -1,11 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://0pqsghgdlmjx"]
 
 [ext_resource type="PackedScene" uid="uid://5idum0psvn3d" path="res://Assets/Nodes/card.tscn" id="1_atgfi"]
-[ext_resource type="Script" path="res://Assets/Nodes/tower.gd" id="1_ujbpf"]
+[ext_resource type="Script" uid="uid://ycv6vhpum2im" path="res://Assets/Nodes/tower.gd" id="1_ujbpf"]
 
 [node name="Tower" type="Node2D"]
 script = ExtResource("1_ujbpf")
-deckselection = null
 
 [node name="Card1" parent="." instance=ExtResource("1_atgfi")]
 position = Vector2(0, -212)
@@ -152,5 +151,12 @@ position = Vector2(168, 164)
 [node name="burntimer" type="Timer" parent="."]
 wait_time = 3.5
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Deck" parent="." instance=ExtResource("1_atgfi")]
+z_index = 20
+position = Vector2(-80, -335)
+rotation = -1.57217
 
 [connection signal="timeout" from="burntimer" to="." method="_on_burntimer_timeout"]

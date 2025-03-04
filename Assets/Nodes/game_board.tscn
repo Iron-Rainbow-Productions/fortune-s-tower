@@ -1,12 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://b31ygwsvk3soo"]
 
-[ext_resource type="Script" path="res://Assets/Nodes/game_board.gd" id="1_qaaj2"]
+[ext_resource type="Script" uid="uid://b33gti7em0lpc" path="res://Assets/Nodes/game_board.gd" id="1_qaaj2"]
 [ext_resource type="Texture2D" uid="uid://belh5373lmvyu" path="res://Assets/Graphics/GameBoard/Base/GameBoard__bg.png" id="1_rifgy"]
 [ext_resource type="Texture2D" uid="uid://cbfg47vop7056" path="res://Assets/Graphics/GameBoard/Base/Board__fg.png" id="2_jd3lk"]
 [ext_resource type="Texture2D" uid="uid://c2fpc8t2sf885" path="res://Assets/Graphics/GameBoard/Base/Felt__mg.png" id="3_w4gqb"]
 [ext_resource type="Texture2D" uid="uid://dv1xx6k7t8hwo" path="res://Assets/Graphics/GameBoard/Base/felt__fg.png" id="4_h8sv4"]
 
 [node name="GameBoard" type="Control"]
+z_index = -2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

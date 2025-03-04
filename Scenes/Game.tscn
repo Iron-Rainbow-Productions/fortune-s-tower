@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3n1srchm056r"]
+[gd_scene load_steps=5 format=3 uid="uid://d3n1srchm056r"]
 
 [ext_resource type="PackedScene" uid="uid://b31ygwsvk3soo" path="res://Assets/Nodes/game_board.tscn" id="1_khl5k"]
-[ext_resource type="Script" path="res://Scenes/game.gd" id="1_sdvfk"]
+[ext_resource type="Script" uid="uid://c5bk0mn4eg6gp" path="res://Scenes/game.gd" id="1_sdvfk"]
 [ext_resource type="PackedScene" uid="uid://0pqsghgdlmjx" path="res://Assets/Nodes/Tower.tscn" id="2_krfow"]
+[ext_resource type="Script" uid="uid://ciwoly0284yr8" path="res://Scenes/buttons.gd" id="4_kldst"]
 
 [node name="Game" type="Node2D"]
 scale = Vector2(0.5, 0.5)
@@ -18,7 +19,85 @@ offset_bottom = 645.0
 position = Vector2(318, 634)
 scale = Vector2(1.2, 1.2)
 
-[node name="Reveal" type="Button" parent="."]
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Row2__lb" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 392.0
+offset_right = 630.0
+offset_bottom = 415.0
+scale = Vector2(2, 2)
+text = "000"
+
+[node name="Row3__lb" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 454.0
+offset_right = 630.0
+offset_bottom = 477.0
+scale = Vector2(2, 2)
+text = "000"
+
+[node name="Row4__lb" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 522.0
+offset_right = 630.0
+offset_bottom = 545.0
+scale = Vector2(2, 2)
+text = "000"
+
+[node name="Row5__lb" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 594.0
+offset_right = 630.0
+offset_bottom = 617.0
+scale = Vector2(2, 2)
+text = "000"
+
+[node name="Row6__lb" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 662.0
+offset_right = 630.0
+offset_bottom = 685.0
+scale = Vector2(2, 2)
+text = "000"
+
+[node name="Row7__lb" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 732.0
+offset_right = 630.0
+offset_bottom = 755.0
+scale = Vector2(2, 2)
+text = "000"
+
+[node name="Row8__lb" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 806.0
+offset_right = 630.0
+offset_bottom = 829.0
+scale = Vector2(2, 2)
+text = "000"
+
+[node name="Buttons" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_kldst")
+
+[node name="Reveal" type="Button" parent="UI/Buttons"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -28,11 +107,12 @@ offset_right = 353.0
 offset_bottom = 963.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3, 3)
+scale = Vector2(1.5, 1)
 size_flags_horizontal = 4
 text = "Hit"
 
-[node name="Stay" type="Button" parent="."]
+[node name="Stay" type="Button" parent="UI/Buttons"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -42,65 +122,9 @@ offset_right = 227.0
 offset_bottom = 963.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3, 3)
+scale = Vector2(1.5, 1)
 size_flags_horizontal = 4
 text = "Stay"
 
-[node name="Row2__lb" type="Label" parent="."]
-offset_left = 590.0
-offset_top = 392.0
-offset_right = 630.0
-offset_bottom = 415.0
-scale = Vector2(2, 2)
-text = "000"
-
-[node name="Row3__lb" type="Label" parent="."]
-offset_left = 590.0
-offset_top = 454.0
-offset_right = 630.0
-offset_bottom = 477.0
-scale = Vector2(2, 2)
-text = "000"
-
-[node name="Row4__lb" type="Label" parent="."]
-offset_left = 590.0
-offset_top = 522.0
-offset_right = 630.0
-offset_bottom = 545.0
-scale = Vector2(2, 2)
-text = "000"
-
-[node name="Row5__lb" type="Label" parent="."]
-offset_left = 590.0
-offset_top = 594.0
-offset_right = 630.0
-offset_bottom = 617.0
-scale = Vector2(2, 2)
-text = "000"
-
-[node name="Row6__lb" type="Label" parent="."]
-offset_left = 590.0
-offset_top = 662.0
-offset_right = 630.0
-offset_bottom = 685.0
-scale = Vector2(2, 2)
-text = "000"
-
-[node name="Row7__lb" type="Label" parent="."]
-offset_left = 590.0
-offset_top = 732.0
-offset_right = 630.0
-offset_bottom = 755.0
-scale = Vector2(2, 2)
-text = "000"
-
-[node name="Row8__lb" type="Label" parent="."]
-offset_left = 590.0
-offset_top = 806.0
-offset_right = 630.0
-offset_bottom = 829.0
-scale = Vector2(2, 2)
-text = "000"
-
-[connection signal="pressed" from="Reveal" to="Tower" method="_on_reveal_pressed"]
-[connection signal="pressed" from="Stay" to="." method="_on_stay_pressed"]
+[connection signal="pressed" from="UI/Buttons/Reveal" to="." method="_on_reveal_pressed"]
+[connection signal="pressed" from="UI/Buttons/Stay" to="." method="_on_stay_pressed"]
